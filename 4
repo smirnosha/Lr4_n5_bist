@@ -1,0 +1,136 @@
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def rand1(n):
+    rand_list = []
+    results = [0, 0, 0, 0, 0, 0]
+    for i in range(n):
+        rand_list = random.randint(1, 6)
+        results[rand_list - 1] += 1
+    return results
+
+
+k = 0
+plt.title('Первый способ')
+for n in [100, 1000, 10000, 1000000]:
+    k += 1
+    plt.subplot(2, 2, k)
+    plt.bar([1, 2, 3, 4, 5, 6], rand1(n), color="red")
+    plt.xlabel('Грани')
+    plt.ylabel('количество')
+
+plt.show()
+
+print('Первый метод', rand1(10))
+
+def rand2(n):
+    results = [0, 0, 0, 0, 0, 0]
+    res = random.sample(range(1, 1000000), n)
+    for i in res:
+        results[res - 1] += 1
+    return res
+
+
+k = 0
+plt.title('Второй способ')
+for n in [100, 1000, 10000, 1000000]:
+    k += 1
+    plt.subplot(2, 2, k)
+    plt.bar([1, 2, 3, 4, 5, 6], rand2(n), color="blue")
+    plt.xlabel('Грани')
+    plt.ylabel('количество')
+
+plt.show()
+print('Второй метод', rand2(10))
+
+
+def rand3(n):
+    results = [0, 0, 0, 0, 0, 0]
+    res = [random.randrange(1, 7, 1) for i in range(1, n + 1)]
+    for i in res:
+        results[i - 1] += 1
+    return results
+
+
+k = 0
+plt.title('Третий способ')
+for n in [100, 1000, 10000, 1000000]:
+    k += 1
+    plt.subplot(2, 2, k)
+    plt.bar([1, 2, 3, 4, 5, 6], rand3(n), color="grey")
+    plt.xlabel('Грани')
+    plt.ylabel('количество')
+
+plt.show()
+
+print('Третий метод', rand3(10))
+
+
+def rand4(n):
+    lis = []
+    results = [0, 0, 0, 0, 0, 0]
+    for _ in range(n):
+        lis.append(random.randint(0, 6))
+    for i in lis:
+        results[i - 1] += 1
+    return results
+
+
+k = 0
+plt.title('Четвертый способ')
+for n in [100, 1000, 10000, 1000000]:
+    k += 1
+    plt.subplot(2, 2, k)
+    plt.bar([1, 2, 3, 4, 5, 6], rand4(n), color="green")
+    plt.xlabel('Грани')
+    plt.ylabel('количество')
+
+plt.show()
+
+print('Четвертый метод', rand4(10))
+
+
+def rand5(n):
+    results = [0, 0, 0, 0, 0, 0]
+    a = list(np.random.randint(low=1, high=7, size=n))
+    for i in a:
+        results[i - 1] += 1
+    return results
+
+
+k = 0
+plt.title('Пятый способ')
+for n in [100, 1000, 10000, 1000000]:
+    k += 1
+    plt.subplot(2, 2, k)
+    plt.bar([1, 2, 3, 4, 5, 6], rand5(n), color="black")
+    plt.xlabel('Грани')
+    plt.ylabel('количество')
+
+plt.show()
+
+print('Пятый метод', rand5(10))
+
+
+def rand6(n):
+    results = []
+    a = np.random.random_sample(size=n)
+    for i in a:
+        results[i - 1] += 1
+    return results
+
+
+k = 0
+plt.title('Шестой способ')
+for n in [100, 1000, 10000, 1000000]:
+    k += 1
+    plt.subplot(2, 2, k)
+    plt.bar([1, 2, 3, 4, 5, 6], rand6(n), color="yelloy")
+    plt.xlabel('Грани')
+    plt.ylabel('количество')
+
+plt.show()
+
+print('Шестой метод', rand6(10))
